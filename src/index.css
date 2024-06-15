@@ -1,0 +1,15 @@
+
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (max-width:1280px) {
+  html {
+    font-size: 13px;
+  }
+}
