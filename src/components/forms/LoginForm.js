@@ -1,3 +1,7 @@
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { LoginRequest } from "../../redux/actions/auth/login";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -8,14 +12,26 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 
 const LoginForm = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
 	const handleSubmit = (event) => {
-	  event.preventDefault();
-	  const data = new FormData(event.currentTarget);
-	  console.log({
-	    email: data.get('email'),
-	    password: data.get('password'),
-	  });
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+		const formData = {
+			email: data.get("email"),
+            password: data.get("password"),
+		};
+		dispatch(LoginRequest(formData))
+        .then((res) => {
+			if (res.payload.status) {
+				navigate("/home");
+			} else {
+				alert("Error al iniciar sesión, intente nuevamente.");
+			}
+		});
 	};
+    
 	return (
 		<Box
 			sx={{
@@ -32,12 +48,7 @@ const LoginForm = () => {
 			<Typography component="h1" variant="h5">
 				Login Account
 			</Typography>
-			<Box
-				component="form"
-				noValidate
-				onSubmit={handleSubmit}
-				sx={{ mt: 1 }}
-			>
+			<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
 				<TextField
 					margin="normal"
 					required
