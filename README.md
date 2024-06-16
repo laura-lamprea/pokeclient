@@ -1,3 +1,30 @@
+# React Application Features
+
+## 1. Login with JWT Authentication
+The login system uses JSON Web Tokens (JWT) for user authentication. Upon login, the server returns a token that is stored in the browser's local storage. This token is used to authenticate the user for subsequent requests.
+
+## 2. New User Registration
+The application allows new users to register by providing the necessary information. The data is sent to the server, which validates it and creates a new user if the data is correct.
+
+## 3. Forms Controlled with Zod Validations
+The forms in the application are controlled and use Zod to validate input data. Zod is a schema validation and parsing library that provides a declarative way to define the structure and constraints of data.
+
+## 4. State Management with Redux Toolkit
+The application uses Redux Toolkit to manage global state. Redux Toolkit simplifies the setup of Redux, providing tools to create slices and manage state efficiently.
+
+## 5. Route Protection
+The application's routes are protected to ensure that only authenticated users can access certain pages. We use a combination of private routes and redirection based on the user's authentication status.
+
+
+
+# Preview images
+![2024-06-16 17 07 14 localhost 42458728e576](https://github.com/laura-lamprea/pokeclient/assets/84552402/3c3e21a2-f5a9-4bfb-bbf5-11c503940f04)
+![2024-06-16 17 08 41 localhost fc9eaf682517](https://github.com/laura-lamprea/pokeclient/assets/84552402/a3773d2e-ccc1-4cf0-8a51-4237667eea5d)
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -29,42 +56,4 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
