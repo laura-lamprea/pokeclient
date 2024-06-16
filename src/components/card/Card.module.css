@@ -1,0 +1,102 @@
+.grass {
+	background-color: #00a648 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/wild-flowers.png");
+}
+
+.fire {
+	background-color: #B92828 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+}
+
+.fairy {
+	background-color: #e388dd !important;
+	background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
+}
+
+.water {
+	background-color: #1CECF3 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/black-scales.png");
+}
+
+.bug {
+	background-color: #54AA5E !important;
+	background-image: url("https://www.transparenttextures.com/patterns/basketball.png");
+}
+
+.fighting {
+	background-color: #595653 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+}
+
+.poison {
+	background-color: #4a185e !important;
+	background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+}
+
+.normal {
+	background-color: #C8952D !important;
+	background-image: url("https://www.transparenttextures.com/patterns/light-wool.png");
+}
+
+.electric {
+	/* background-color: #d0d615;
+    background-image: url("https://www.transparenttextures.com/patterns/diagonal-striped-brick.png"); */
+	background-color: #D6DD20 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+}
+
+.ground {
+	background-color: #7A4E18 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/exclusive-paper.png");
+}
+
+.psychic {
+	background-color: #FFD919 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/padded.png");
+}
+
+.rock {
+	background-color: #a1a1a1 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/buried.png");
+}
+
+.ghost {
+	background-color: #5c1159 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/gravel.png");
+	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.ice {
+	background-color: #7aeff3 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/fresh-snow.png");
+}
+
+.flying {
+	background-color: #50b1f2 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
+}
+
+.steel {
+	background-color: #92a39c !important;
+	background-image: url("https://www.transparenttextures.com/patterns/subtle-zebra-3d.png");
+}
+
+.dark {
+	background-color: #0c1706 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/light-wool.png");
+}
+
+.dragon {
+	background-color: #464f15 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/swirl.png");
+}
+
+.unknown {
+	background-color: #d3dba7 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/tex2res4.png");
+}
+
+.shadow {
+	background-color: #340a36 !important;
+	background-image: url("https://www.transparenttextures.com/patterns/wall-4-light.png");
+}

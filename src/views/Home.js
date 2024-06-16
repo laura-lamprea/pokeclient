@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import Grid from "@mui/material/Grid";
-import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
 import CardPokemon from "../components/card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { GetPokemons } from "../redux/actions/pokemons/getPokemons";
 import { UserRequest } from "../redux/actions/auth/user";
 import { Container } from "@mui/material";
+import loading from "../assets/gif/loading.gif";
+import Navbar from "../components/navbar/Navbar";
 
 const Home = () => {
 	const dispatch = useDispatch();
@@ -28,21 +28,25 @@ const Home = () => {
 
 	return (
 		<div>
-			<h1>Home TODO LOS POKEMONES AQUI</h1>
-			<Button variant="contained" component={Link} to="/favorites">
-				IR A FAVORITOS
-			</Button>
+			<Navbar />
 			{pokemonsLoading ? (
-				<p>Loading Pokemons...</p>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+						height: "80vh",
+					}}
+				>
+					<img src={loading} alt="loading..." />
+				</div>
 			) : (
-				<Container maxWidth="lg">
-					<Grid
-						container
-						spacing={{ xs: 2, md: 3 }}
-						rowSpacing={3}
-						columnSpacing={5}
-					>
-						{pokemons.map(
+				<Container
+					maxWidth="lg"
+					sx={{ marginTop: "70px", marginBottom: "100px", display: "flex", justifyContent: "center" }}
+				>
+					<Grid container justifyContent="center" spacing={3}>
+						{pokemons?.map(
 							({
 								id,
 								name,
@@ -55,20 +59,21 @@ const Home = () => {
 								type,
 								imgT,
 							}) => (
-								<CardPokemon
-									key={id}
-									id={id}
-									name={name}
-									lifeTime={lifeTime}
-									defense={defending}
-									height={height}
-									weight={weight}
-									attack={force}
-									speed={speed}
-									imgT={imgT}
-									types={type}
-									isFavorite={isFavorite(id)}
-								/>
+								<Grid item key={id}>
+									<CardPokemon
+										id={id}
+										name={name}
+										lifeTime={lifeTime}
+										defense={defending}
+										height={height}
+										weight={weight}
+										attack={force}
+										speed={speed}
+										imgT={imgT}
+										types={type}
+										isFavorite={isFavorite(id)}
+									/>
+								</Grid>
 							)
 						)}
 					</Grid>

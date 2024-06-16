@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import CardPokemon from "../components/card/Card";
 import { UserRequest } from "../redux/actions/auth/user";
+import { Container } from "@mui/material";
 
 const Favorites = () => {
 	const dispatch = useDispatch();
@@ -43,42 +44,48 @@ const Favorites = () => {
 			) : favorites.length === 0 ? (
 				<p>Aún no hay favoritos.</p>
 			) : (
-				<Grid
-					container
-					spacing={{ xs: 2, md: 3 }}
-					rowSpacing={3}
-					columnSpacing={5}
+				<Container
+					maxWidth="lg"
+					sx={{
+						marginTop: "70px",
+						marginBottom: "100px",
+						display: "flex",
+						justifyContent: "center",
+					}}
 				>
-					{favorites?.map(
-						({
-							id,
-							name,
-							lifeTime,
-							force,
-							defending,
-							speed,
-							height,
-							weight,
-							type,
-							imgT,
-						}) => (
-							<CardPokemon
-								key={id}
-								id={id}
-								name={name}
-								lifeTime={lifeTime}
-								force={force}
-								defending={defending}
-								speed={speed}
-								height={height}
-								weight={weight}
-								type={type}
-								imgT={imgT}
-								isFavorite={isFavorite(id)}
-							/>
-						)
-					)}
-				</Grid>
+					<Grid container justifyContent="center" spacing={3}>
+						{favorites?.map(
+							({
+								id,
+								name,
+								lifeTime,
+								force,
+								defending,
+								speed,
+								height,
+								weight,
+								type,
+								imgT,
+							}) => (
+								<Grid item key={id}>
+									<CardPokemon
+										id={id}
+										name={name}
+										lifeTime={lifeTime}
+										defense={defending}
+										height={height}
+										weight={weight}
+										attack={force}
+										speed={speed}
+										imgT={imgT}
+										types={type}
+										isFavorite={isFavorite(id)}
+									/>
+								</Grid>
+							)
+						)}
+					</Grid>
+				</Container>
 			)}
 		</div>
 	);
