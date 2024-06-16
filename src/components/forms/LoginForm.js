@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginRequest } from "../../redux/actions/auth/login";
@@ -8,30 +8,39 @@ import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import LoginIcon from '@mui/icons-material/Login';
 import Typography from "@mui/material/Typography";
+import { Alert } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const LoginForm = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const [showAlert, setShowAlert] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 
 	const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
+		event.preventDefault();
+		const data = new FormData(event.currentTarget);
 		const formData = {
 			email: data.get("email"),
-            password: data.get("password"),
+			password: data.get("password"),
 		};
-		dispatch(LoginRequest(formData))
-        .then((res) => {
+		dispatch(LoginRequest(formData)).then((res) => {
 			if (res.payload.status) {
 				navigate("/home");
 			} else {
-				alert("Error al iniciar sesión, intente nuevamente.");
+				setShowAlert(true);
 			}
 		});
 	};
-    
+
 	return (
 		<Box
 			sx={{
@@ -43,12 +52,12 @@ const LoginForm = () => {
 			}}
 		>
 			<Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-				<LockOutlinedIcon />
+				<LoginIcon />
 			</Avatar>
 			<Typography component="h1" variant="h5">
 				Login Account
 			</Typography>
-			<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+			<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, width:"500px" }}>
 				<TextField
 					margin="normal"
 					required
@@ -59,16 +68,30 @@ const LoginForm = () => {
 					autoComplete="email"
 					autoFocus
 				/>
-				<TextField
-					margin="normal"
-					required
-					fullWidth
-					name="password"
-					label="Password"
-					type="password"
-					id="password"
-					autoComplete="current-password"
-				/>
+				<FormControl variant="outlined" margin="normal" fullWidth>
+					<InputLabel htmlFor="outlined-adornment-password">
+						Password
+					</InputLabel>
+					<OutlinedInput
+						name="password"
+						label="Password"
+						id="password"
+						autoComplete="current-password"
+						type={showPassword ? "text" : "password"}
+						fullWidth
+						endAdornment={
+							<InputAdornment position="end">
+								<IconButton
+									aria-label="toggle password visibility"
+									onClick={() => setShowPassword(!showPassword)}
+									edge="end"
+								>
+									{showPassword ? <VisibilityOff /> : <Visibility />}
+								</IconButton>
+							</InputAdornment>
+						}
+					/>
+				</FormControl>
 				<Button
 					type="submit"
 					fullWidth
@@ -84,6 +107,15 @@ const LoginForm = () => {
 						</Link>
 					</Grid>
 				</Grid>
+				{showAlert && (
+					<Alert
+						severity="error"
+						onClose={() => setShowAlert(false)}
+						sx={{ mt: 3 }}
+					>
+						Invalid credentials
+					</Alert>
+				)}
 			</Box>
 		</Box>
 	);
