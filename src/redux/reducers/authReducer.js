@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { LoginRequest } from "../actions/auth/login";
+import { UserRequest } from "../actions/auth/user";
 
 const initialState = {
 	isAuth: false,
 	is_loading: false,
+	user: [],
+	is_user_loading: false,
 };
 
 export const userReducer = createSlice({
@@ -28,6 +31,19 @@ export const userReducer = createSlice({
 			})
 			.addCase(LoginRequest.rejected, (state) => {
 				return { ...state, is_loading: true, isAuth: false };
+			})
+			.addCase(UserRequest.pending, (state) => {
+				return { ...state, is_user_loading: true, user: [] };
+			})
+			.addCase(UserRequest.fulfilled, (state, action) => {
+				return {
+					...state,
+					is_user_loading: false,
+					user: action.payload,
+				};
+			})
+			.addCase(UserRequest.rejected, (state) => {
+				return { ...state, is_user_loading: true, user: [] };
 			});
 	},
 });

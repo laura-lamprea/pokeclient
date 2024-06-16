@@ -8,6 +8,7 @@ export const LoginRequest = createAsyncThunk(
 			const result = await auth.Login(formData);
 			if (result?.status === 200 || result?.status === 204) {
 				localStorage.setItem("token", result.data.token);
+				localStorage.setItem("email", result.data.email);
 				return { status: true };
 			} else {
 				return { status: false };
