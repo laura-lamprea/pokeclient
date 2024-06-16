@@ -42,8 +42,11 @@ export default function CardPokemon({
 				dispatch(UserRequest(email));
 			});
 		} else {
-			dispatch(AddFavorite(formData)).then(() => {
-				dispatch(UserRequest(email));
+			dispatch(AddFavorite(formData)).then((res) => {
+				if (res.payload.status) dispatch(UserRequest(email));
+				else {
+					alert("You are limited to 10 favorite Pokémon");
+				}
 			});
 		}
 	};

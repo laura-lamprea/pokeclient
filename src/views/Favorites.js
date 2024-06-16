@@ -7,6 +7,9 @@ import Grid from "@mui/material/Grid";
 import CardPokemon from "../components/card/Card";
 import { UserRequest } from "../redux/actions/auth/user";
 import { Container } from "@mui/material";
+import loading from "../assets/gif/loading.gif";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import EmptyCard from "../components/card/EmptyCard";
 
 const Favorites = () => {
 	const dispatch = useDispatch();
@@ -24,7 +27,10 @@ const Favorites = () => {
 
 	useEffect(() => {
 		const email = localStorage.getItem("email");
-		dispatch(UserRequest(email));
+		const token = localStorage.getItem("token");
+		if (email && token) {
+			dispatch(UserRequest(email));
+		}
 	}, [dispatch]);
 
 	useEffect(() => {
@@ -35,53 +41,73 @@ const Favorites = () => {
 
 	return (
 		<div>
-			<Button variant="contained" component={Link} to="/home">
-				Atrás
-			</Button>
-			<h1>Favorites</h1>
 			{favoritesLoading ? (
-				<p>Loading Favorites...</p>
-			) : favorites.length === 0 ? (
-				<p>Aún no hay favoritos.</p>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+						height: "80vh",
+					}}
+				>
+					<img src={loading} alt="loading..." />
+				</div>
 			) : (
 				<Container
 					maxWidth="lg"
 					sx={{
-						marginTop: "70px",
-						marginBottom: "100px",
 						display: "flex",
+						flexDirection: "column",
 						justifyContent: "center",
+						marginTop: "50px",
+						marginBottom: "100px",
 					}}
 				>
+					<div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+						<Button
+							variant="outlined"
+							startIcon={<ArrowBackIcon />}
+							component={Link}
+							to="/home"
+							sx={{ height: "40px" }}
+						>
+							Back
+						</Button>
+						<h1>Your favorites</h1>
+					</div>
 					<Grid container justifyContent="center" spacing={3}>
-						{favorites?.map(
-							({
-								id,
-								name,
-								lifeTime,
-								force,
-								defending,
-								speed,
-								height,
-								weight,
-								type,
-								imgT,
-							}) => (
-								<Grid item key={id}>
-									<CardPokemon
-										id={id}
-										name={name}
-										lifeTime={lifeTime}
-										defense={defending}
-										height={height}
-										weight={weight}
-										attack={force}
-										speed={speed}
-										imgT={imgT}
-										types={type}
-										isFavorite={isFavorite(id)}
-									/>
-								</Grid>
+						{favorites.length === 0 ? (
+							<EmptyCard/>
+						) : (
+							favorites?.map(
+								({
+									id,
+									name,
+									lifeTime,
+									force,
+									defending,
+									speed,
+									height,
+									weight,
+									type,
+									imgT,
+								}) => (
+									<Grid item key={id}>
+										<CardPokemon
+											id={id}
+											name={name}
+											lifeTime={lifeTime}
+											defense={defending}
+											height={height}
+											weight={weight}
+											attack={force}
+											speed={speed}
+											imgT={imgT}
+											types={type}
+											isFavorite={isFavorite(id)}
+										/>
+									</Grid>
+								)
 							)
 						)}
 					</Grid>

@@ -2,7 +2,7 @@ import axios from "../../axios/axios_instance";
 const token = localStorage.getItem("token");
 
 const favorites = {
-	GetFavorites: async (id) => {
+	GetFavorites: async (id, token) => {
 		try {
 			const resp = await axios.get(`/users/favorites/${id}`, {
 				headers: { token },

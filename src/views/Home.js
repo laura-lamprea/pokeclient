@@ -22,7 +22,10 @@ const Home = () => {
 
 	useEffect(() => {
 		const email = localStorage.getItem("email");
-		dispatch(UserRequest(email));
+		const token = localStorage.getItem("token");
+		if (email && token) {
+			dispatch(UserRequest(email));
+		}
 		dispatch(GetPokemons());
 	}, []);
 
@@ -43,7 +46,12 @@ const Home = () => {
 			) : (
 				<Container
 					maxWidth="lg"
-					sx={{ marginTop: "70px", marginBottom: "100px", display: "flex", justifyContent: "center" }}
+					sx={{
+						marginTop: "70px",
+						marginBottom: "200px",
+						display: "flex",
+						justifyContent: "center",
+					}}
 				>
 					<Grid container justifyContent="center" spacing={3}>
 						{pokemons?.map(

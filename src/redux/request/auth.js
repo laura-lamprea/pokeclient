@@ -1,5 +1,4 @@
 import axios from "../../axios/axios_instance";
-const token = localStorage.getItem("token");
 
 const auth = {
 	Login: async (data) => {
@@ -18,7 +17,7 @@ const auth = {
 			return error;
 		}
 	},
-	User: async (email) => {
+	User: async (email, token) => {
 		try {
 			const resp = await axios.get(`/user?email=${email}`, {
 				headers: { token },

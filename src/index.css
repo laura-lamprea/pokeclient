@@ -1,15 +1,17 @@
-
-
 h1 {
-  font-family: 'Press Start 2P', cursive;
+	font-family: "Press Start 2P", cursive;
 }
 
 html {
-  font-size: 14px;
+	font-size: 14px;
 }
 
-@media (max-width:1280px) {
-  html {
-    font-size: 13px;
-  }
+@media (max-width: 1280px) {
+	html {
+		font-size: 13px;
+	}
+}
+
+body {
+	background: linear-gradient(to right, #f2f2f2, #d9d9d9);
 }
